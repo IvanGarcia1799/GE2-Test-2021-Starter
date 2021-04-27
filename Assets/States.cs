@@ -45,7 +45,8 @@ class ReturnState : State
     public override void Think(){
         if (Vector3.Distance(owner.GetComponent<Seek>().targetGameObject.transform.position,
         owner.transform.position) <= 10){
-            
+
+            owner.ChangeState(new WaitState());
         }
     }
 
