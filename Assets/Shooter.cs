@@ -5,8 +5,10 @@ using UnityEngine;
 public class Shooter : MonoBehaviour
 {
     public GameObject ball;
-    public GameObject thrownBall;
+    public GameObject targetBall;
     public float speed = 7.0f;
+
+    public bool returned = true;
  
     public void Update()
     {
@@ -19,6 +21,8 @@ public class Shooter : MonoBehaviour
             if (rb != null)
             {
                 rb.velocity = mouseRay.direction * speed;
+                targetBall = theBall;
+                returned = false;
             }
         }
     }
