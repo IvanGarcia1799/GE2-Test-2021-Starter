@@ -7,16 +7,11 @@ public class DogController : MonoBehaviour
 
     public GameObject person;
     public GameObject mouth;
-    public gameObject ball;
+    public GameObject ball;
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<StateMachine>().ChangeState(new ReturnState());
     }
-
     // Update is called once per frame
-    void Update()
-    {
-        ball = GetComponent<Shooter>().thrownBall;
-    }
 }

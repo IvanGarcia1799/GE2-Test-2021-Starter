@@ -6,7 +6,7 @@ public class Shooter : MonoBehaviour
 {
     public GameObject ball;
     public GameObject targetBall;
-    public float speed = 7.0f;
+    public float speed = 20.0f;
 
     public bool returned = true;
  
