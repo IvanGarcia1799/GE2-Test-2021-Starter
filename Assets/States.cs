@@ -24,6 +24,10 @@ class FetchState : State
         owner.GetComponent<Seek>().enabled = true;
     }
     public override void Think(){
+                if(Vector3.Distance(owner.GetComponent<Seek>().targetGameObject.transform.position,
+        owner.tranform.position) <= 1){
+            owner.GetComponent<Seek>().targetGameObject.parent = owner.GetComponent<DogController>().mouth;
+        }
         if(GameObject.Find("Main Camera").GetComponent<Shooter>().returned != false){
              owner.ChangeState(new ReturnState());
         }
@@ -45,7 +49,7 @@ class ReturnState : State
     public override void Think(){
         if (Vector3.Distance(owner.GetComponent<Seek>().targetGameObject.transform.position,
         owner.transform.position) <= 10){
-
+            owner.GetComponent<Seek>().targetGameObject.parent = null;
             owner.ChangeState(new WaitState());
         }
     }
