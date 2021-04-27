@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class Shooter : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject ball;
+    public GameObject thrownBall;
+    public float speed = 7.0f;
+ 
+    public void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            GameObject theBall = (GameObject)Instantiate(ball, mouseRay.origin, Quaternion.identity);
+            Rigidbody rb = theBall.GetComponent<Rigidbody>();
+ 
+            if (rb != null)
+            {
+                rb.velocity = mouseRay.direction * speed;
+            }
+        }
     }
 }
